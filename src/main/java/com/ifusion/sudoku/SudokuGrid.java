@@ -27,11 +27,6 @@ public class SudokuGrid {
         return grid[row][column];
     }
 
-    public SudokuGrid setCell(int row, int column, int value) {
-        grid[row][column] = value;
-        return this;
-    }
-
     public int[] getRow(int index) {
         return grid[index];
     }
@@ -60,5 +55,38 @@ public class SudokuGrid {
         }
 
         return contents;
+    }
+
+    public boolean setCell(int row, int column, int value) {
+        // Boundaries
+        if(row < 0 || column < 0 || row > size() - 1 || column > size() - 1) {
+            return false;
+        }
+
+        //Rows
+        for(int cell : getRow(row)) {
+            if(cell == value) {
+                return false;
+            }
+        }
+
+        //Columns
+        for(int cell : getColumn(column)) {
+            if(cell == value) {
+                return false;
+            }
+        }
+
+        //Subgrid
+        int subGridRowIndex = row / baseSize();
+        int subGridColumnIndex = column / baseSize();
+        for(int cell : getSubGrid(subGridRowIndex,subGridColumnIndex)) {
+            if(cell == value) {
+                return false;
+            }
+        }
+
+        grid[row][column] = value;
+        return true;
     }
 }

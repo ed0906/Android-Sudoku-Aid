@@ -15,44 +15,44 @@ import static org.junit.Assert.*;
 @Config(manifest = "src/main/AndroidManifest.xml", emulateSdk = 18)
 public class SudokuTest {
 
-    private Sudoku sudoku;
+    private SudokuGrid sudoku;
 
     @Test
     public void shouldStartWithEmptyGrid() {
         // Given
-        sudoku = new Sudoku(2);
+        sudoku = new SudokuGrid(2);
 
         // Then
-        assertEquals(0,sudoku.get(0,0));
+        assertEquals(0,sudoku.getCell(0,0));
     }
 
     @Test
     public void shouldDisallowIdenticalNumberInSameRow() {
         // Given
-        sudoku = new Sudoku(2);
+        sudoku = new SudokuGrid(2);
 
         // Then
-        assertTrue(sudoku.set(0,0,1));
-        assertFalse(sudoku.set(0,3,1));
+        assertTrue(sudoku.setCell(0,0,1));
+        assertFalse(sudoku.setCell(0,3,1));
     }
 
     @Test
     public void shouldDisallowIdenticalNumberInSameColumn() {
         // Given
-        sudoku = new Sudoku(2);
+        sudoku = new SudokuGrid(2);
 
         // Then
-        assertTrue(sudoku.set(0,0,1));
-        assertFalse(sudoku.set(3,0,1));
+        assertTrue(sudoku.setCell(0,0,1));
+        assertFalse(sudoku.setCell(3,0,1));
     }
 
     @Test
     public void shouldDisallowIdenticalNumberInSameSubGrid() {
         // Given
-        sudoku = new Sudoku(2);
+        sudoku = new SudokuGrid(2);
 
         // Then
-        assertTrue(sudoku.set(0,0,1));
-        assertFalse(sudoku.set(1,1,1));
+        assertTrue(sudoku.setCell(0,0,1));
+        assertFalse(sudoku.setCell(1,1,1));
     }
 }
