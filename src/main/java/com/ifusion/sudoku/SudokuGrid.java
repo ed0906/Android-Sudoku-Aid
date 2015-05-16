@@ -15,9 +15,21 @@ public class SudokuGrid {
         this.grid = new int[size][size];
     }
 
-    public boolean set(int row, int column, int value) {
+    public int size() {
+        return this.size;
+    }
+
+    public int baseSize() {
+        return this.baseSize;
+    }
+
+    public int getCell(int row, int column) {
+        return grid[row][column];
+    }
+
+    public SudokuGrid setCell(int row, int column, int value) {
         grid[row][column] = value;
-        return true;
+        return this;
     }
 
     public int[] getRow(int index) {

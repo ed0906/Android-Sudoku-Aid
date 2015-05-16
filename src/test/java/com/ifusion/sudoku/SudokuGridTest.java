@@ -1,4 +1,4 @@
-package com.ifusion.activity.sudoku;
+package com.ifusion.sudoku;
 
 import com.ifusion.sudoku.SudokuGrid;
 
@@ -19,10 +19,10 @@ public class SudokuGridTest {
     public void givenASudokuGrid_shouldReturnRow() throws Exception {
         // Given
         grid = new SudokuGrid(2);
-        grid.set(0,0,1);
-        grid.set(0,1,2);
-        grid.set(0,2,3);
-        grid.set(0,3,4);
+        grid.setCell(0, 0, 1);
+        grid.setCell(0, 1, 2);
+        grid.setCell(0, 2, 3);
+        grid.setCell(0, 3, 4);
 
         // Then
         assertArrayEquals(new int[]{1, 2, 3, 4}, grid.getRow(0));
@@ -32,10 +32,10 @@ public class SudokuGridTest {
     public void givenASudokuGrid_shouldReturnColumn() throws Exception {
         // Given
         grid = new SudokuGrid(2);
-        grid.set(0,0,1);
-        grid.set(1,0,2);
-        grid.set(2,0,3);
-        grid.set(3,0,4);
+        grid.setCell(0, 0, 1);
+        grid.setCell(1, 0, 2);
+        grid.setCell(2, 0, 3);
+        grid.setCell(3, 0, 4);
 
         // Then
         assertArrayEquals(new int[] {1,2,3,4}, grid.getColumn(0));
@@ -45,10 +45,10 @@ public class SudokuGridTest {
     public void givenASudokuGrid_shouldReturnSubGrid() throws Exception {
         // Given
         grid = new SudokuGrid(2);
-        grid.set(0,0,1);
-        grid.set(0,1,2);
-        grid.set(1,0,3);
-        grid.set(1,1,4);
+        grid.setCell(0, 0, 1);
+        grid.setCell(0, 1, 2);
+        grid.setCell(1, 0, 3);
+        grid.setCell(1, 1, 4);
 
         // Then
         assertArrayEquals(new int[] {1,2,3,4}, grid.getSubGrid(0, 0));
